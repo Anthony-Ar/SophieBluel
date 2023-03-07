@@ -1,0 +1,386 @@
+/* Errors */
+@keyframes alerts {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.warning {
+    margin: auto;
+    width: 50%;
+    padding: 1em;
+    margin-top: 1em;
+    background: #ff7272;
+    border: 2px solid #ff9898;
+    border-radius: 10px;
+}
+
+#alerts-group {
+    z-index: 9999;
+    position: fixed;
+    right: 100px;
+    top: 70px;
+    max-width: 20%;
+}
+
+#alerts-group .alerts {
+    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+}
+
+.info {
+    background: rgb(75, 177, 207, 0.9);
+}
+
+.warn {
+    background: rgb(231, 180, 70, 0.9);
+}
+
+.error {
+    background: rgb(237, 79, 50, 0.9);
+}
+
+.success {
+    background: rgb(11, 143, 22, 0.9);
+}
+
+.alerts p {
+    margin-left: 1em;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.alerts p.refresh {
+    text-decoration: underline;
+}
+
+/* Form */
+input[type="text"], input[type="password"], select {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+    height: 50px;
+    border: none;
+    padding: 0 1em;
+
+    color: #444444;
+    font-family: 'Work Sans';
+    font-size: 14px;
+}
+
+input[type="submit"], #add-form-submit {
+    padding: 1em 0;
+}
+
+#add-form-submit {
+    width: 240px;
+    margin: 0 auto;
+    background: #A7A7A7;
+}
+
+form#add-form label {
+    margin: 1em 0;
+    font-weight: 500;
+    color: #3D3D3D;
+}
+
+form#add-form span.separator {
+    margin: 3em 0;
+}
+
+.img-content {
+    background: #E8F1F7;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2em 0;
+}
+
+.img-content i.file {
+    font-size: 60px;
+    color: #B9C5CC;
+    margin-top: 20px;
+}
+
+.img-content p {
+    color: #444444;
+    font-size: 10px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.img-content label[for="image"] {
+    display: block;
+    width: 170px;
+    border-radius: 60px;
+    background: #CBD6DC;
+    padding: 1em 0;
+    text-align: center;
+    border: none;
+    margin: 2em 0 1em;
+    cursor: pointer;
+
+    font-family: 'Work Sans';
+    font-weight: 500;
+    font-size: 14px;
+    color: #306685;
+}
+
+.img-content input[type=file] {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+.img-content img {
+    width: 35%;
+    object-fit: cover;
+}
+
+/* Modal */
+#modal {
+    position: fixed; 
+    z-index: 8999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: auto;
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-body {
+    border-radius: 10px;
+    background: white;
+    width: 630px;
+}
+
+.modal-body i.close, i.back {
+    position: relative;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modal-body i.close {
+    float: right; 
+    top: 32px;
+    right: 35px;
+}
+
+.modal-body i.back {
+    float: left;
+    top: 32px;
+    left: 35px;
+}
+
+.modal-content {
+    margin: auto;
+    padding: 5em 105px 3em;
+    text-align: center;
+}
+
+.modal-content h3 {
+    font-size: 26px;
+}
+
+.modal-content .modal-galery {
+    margin: 2em 0 3em;
+}
+
+.modal-content span.separator {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: #B3B3B3;
+    margin-bottom: 1em;
+}
+
+.modal-content .add-btn {
+    width: 240px;
+    padding: 1em 0;
+}
+
+.modal-content a.delete-all {
+    display: block;
+    color: #D65353;
+    text-decoration: none;
+}
+
+.modal-galery {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 0.5em;
+}
+
+.modal-galery .galery-items {
+    text-align: left;
+}
+
+.galery-items img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.galery-items .option {
+    position: relative;
+    display: flex;
+    float: right;
+    right: 5px;
+    top: 20px;
+}
+
+.galery-items i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    background: #000000;
+    width: 17px;
+    height: 17px;
+    margin-left: 0.2em;
+    cursor: pointer;
+
+    color: white;
+    font-size: 10px;
+}
+
+.modal-content form#add-form {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+/* Admin */
+.admin-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    background: #000000;
+}
+
+.admin-navbar p {
+    font-size: 16px;
+    color: white;
+}
+
+.admin-navbar button {
+    width: 220px; 
+    padding: .5em 0;
+    border-radius: 60px;
+    background: white;
+    margin-left: 2em;
+    cursor: pointer;
+
+    color: #000000;
+    font-family: 'Work Sans';
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#portfolio .projects {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3em;
+}
+
+#portfolio h2 {
+    margin: 0;
+}
+
+#portfolio .admin-change{
+    cursor: pointer;
+    margin-left: 2em;
+}
+
+/* LogIn */
+body.login {
+    background: #FFFEF8;
+}
+
+nav li {
+    cursor: pointer;
+}
+
+nav li a {
+    color: #000000;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    color: #B1663C;
+}
+
+nav li.active {
+    font-weight: bold;
+}
+
+section#login {
+    text-align: center;
+    margin-top: 10em;
+}
+
+section#login form {
+    margin-top: 3em;
+}
+
+section#login form div {
+    display: flex;
+    flex-direction: column;
+    width: 380px;
+    margin: 1.5em auto;
+    text-align: left;
+}
+
+section#login form div label, a.password-lost {
+    color: #3D3D3D;
+    font-weight: 500;
+    margin-bottom: .4em;
+}
+
+a.password-lost {
+    text-decoration: underline;
+}
+
+/* Category */
+.category {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3em;
+    
+}
+
+.category li {
+    display: inline-block;
+    border: 1px solid #1D6154;
+    border-radius: 60px;
+    padding: 1em;
+    margin-inline: 10px;
+
+    font-family: 'Syne';
+    font-weight: 700;
+    font-size: 16px;
+    color: #1D6154;
+}
+
+.category li:hover, .category li.active {
+    background: #1D6154;
+    color: white;
+}
+
+.category li:hover {
+    cursor: pointer;
+}
