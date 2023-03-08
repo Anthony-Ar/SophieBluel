@@ -1,30 +1,25 @@
-import { fetchApi } from "../utils/fetch.js";
 import { deleteProject } from "../admin/portfolio.js";
+import { fetchApi } from "../utils/fetch.js";
 
 export async function displayAdminPortfolio() {
-    let works = await fetchApi(apiWorks, 'GET');
-    let project = '';
-    let el = document.querySelector('.modal-galery');
-    el.innerHTML = '';
+    let fetchWorks = await fetchApi(apiWorks, 'GET');
 
-    works.data.forEach((item) => {
+    fetchWorks.data.forEach((item) => {
         if(deleteList.find(el => el == item.id) == undefined) {
-            project = createAdminItem(item);
-            el.append(project)
+            createAdminItem(item);
         }  
     })
 
     createList.forEach((item)=> {
-        project = createAdminItem(item, 't');
-        el.append(project)
+        createAdminItem(item, 't');
     });
 }
 
 export async function displayPortfolio(catId = 0) {
-    let works = await fetchApi(apiWorks, 'GET');
+    let fetchWorks = await fetchApi(apiWorks, 'GET');
     let figure = '';
 
-    works.data.forEach((item) => {
+    fetchWorks.data.forEach((item) => {
         if(catId == 0 || item.categoryId == catId) {
             createItem(item);
         } 
@@ -71,5 +66,6 @@ function createAdminItem(item, tid = '') {
     option.append(del);
     galeryItems.append(option, img, p);
 
-    return galeryItems;
+    let el = document.querySelector('.modal-galery');
+    el.append(galeryItems)
 }
