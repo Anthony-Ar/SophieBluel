@@ -3,9 +3,6 @@ import { modal, newModal } from "../modals/modals.js";
 import { createItem } from "../components/portfolio.js";
 import alerts from "../utils/alerts.js";
 
-globalThis.createList = [];
-globalThis.deleteList = [];
-
 export function createProject(title, category) {
     if(currentFile != '') {
         let project = {'id': createList.length, 'title': title, 'category': category, 'imageUrl': currentFile.imgSrc, 'image': currentFile.file};
@@ -14,6 +11,7 @@ export function createProject(title, category) {
         createItem(project, 't');
         alerts('success', 'Le projet "'+title+'" vient d\'être crée en mode édition.');
 
+        currentFile = '';
         newModal(0);
     } else {
         alerts('warn', 'Vous devez d\'abord choisir une image à associer au projet.');

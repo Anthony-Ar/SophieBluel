@@ -1,6 +1,5 @@
 import { adminModal, uploadModal } from "./modalsStatic.js";
-
-globalThis.currentFile = '';
+import alerts from "../utils/alerts.js";
 
 export function modal() {
     if(document.getElementById('modal')) {
@@ -28,8 +27,8 @@ export function importFile(file) {
             let reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = function (e) {
-                let image= new Image();
-                image.src=e.target.result;
+                let image = new Image();
+                image.src = e.target.result;
                 image.onload = function () {
                     document.querySelector('.img-content').innerHTML = '<img src="'+image.src+'" alt="Image téléchargée">';
                     currentFile = {'imgSrc': image.src, 'file': file};

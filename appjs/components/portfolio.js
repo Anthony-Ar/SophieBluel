@@ -22,10 +22,7 @@ export async function displayAdminPortfolio() {
 
 export async function displayPortfolio(catId = 0) {
     let works = await fetchApi(apiWorks, 'GET');
-
     let figure = '';
-    let gallery = document.querySelector('.gallery');
-    gallery.innerHTML = '';
 
     works.data.forEach((item) => {
         if(catId == 0 || item.categoryId == catId) {

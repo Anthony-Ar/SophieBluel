@@ -1,6 +1,7 @@
-globalThis.apiLogin = 'http://localhost:5678/api/users/login';
-globalThis.apiWorks = 'http://localhost:5678/api/works';
-globalThis.apiCategories = 'http://localhost:5678/api/categories';
+const api = 'http://localhost:5678/api/';
+globalThis.apiLogin = api+'users/login';
+globalThis.apiWorks = api+'works';
+globalThis.apiCategories = api+'categories';
 
 export async function fetchApi(src, action, content = null, value = null, token = null, returnJson = true) {
     let fetchStatus = '';
