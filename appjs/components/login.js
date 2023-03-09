@@ -15,15 +15,19 @@ export function logout() {
 }
 
 if(document.getElementById('login-form')) {
-    document.getElementById('login-form').addEventListener('submit', (e) => {
-        e.preventDefault();
+    if(isConnected()) {
+        window.location.href = './index.html';
+    } else {
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
 
-        let email = document.getElementById('email').value;
-        let password = document.getElementById('password').value;
+            let email = document.getElementById('email').value;
+            let password = document.getElementById('password').value;
 
-        let body = {'email': email, 'password': password};
-        login(body);
-    })
+            let body = {'email': email, 'password': password};
+            login(body);
+        });
+    }
 }
 
 async function login(values) {

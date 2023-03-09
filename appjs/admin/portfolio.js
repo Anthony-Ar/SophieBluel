@@ -4,7 +4,7 @@ import { createItem } from "../components/portfolio.js";
 import alerts from "../utils/alerts.js";
 
 export function createProject(title, category) {
-    if(currentFile != '') {
+    if(currentFile != []) {
         let project = {'id': createList.length, 'title': title, 'category': category, 'imageUrl': currentFile.imgSrc, 'image': currentFile.file};
         createList.push(project);
 
@@ -18,11 +18,14 @@ export function createProject(title, category) {
     }
 }
 
-export function deleteProject(el) {
+export function deleteProject(el, type, tid = null) {
     let id = el.getAttribute('data-id');
 
-    deleteList.push(id);
-    delete createList[id];
+    if(type == 0) {
+        deleteList.push(id);
+    } else {
+        createList = createList.filter(del => del.id != tid);
+    }
 
     modal() ? el.parentNode.parentNode.remove() : null
     document.getElementById(id).remove();

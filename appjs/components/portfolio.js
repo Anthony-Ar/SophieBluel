@@ -55,7 +55,8 @@ function createAdminItem(item, tid = '') {
     del.setAttribute('data-id', tid+item.id);
     del.setAttribute('data-name', item.title);
     del.addEventListener('click', function() {
-        deleteProject(this);
+        let type = tid == '' ? 0 : 1
+        deleteProject(del, type, item.id);
     });
 
     let img = document.createElement('img');
