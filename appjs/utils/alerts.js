@@ -16,7 +16,7 @@ function getIcon(type) {
         case 'warn': return '<i class="fa-solid fa-triangle-exclamation"></i>'; break;
         case 'info': return '<i class="fa-solid fa-circle-info"></i>'; break;
         case 'success': return '<i class="fa-solid fa-circle-check"></i>'; break;
-        default: break;
+        default: return '?'; break;
     };
 }
 
