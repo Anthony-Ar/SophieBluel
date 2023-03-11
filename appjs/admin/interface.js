@@ -17,12 +17,12 @@ export default function displayAdminInterface() {
     navbar.append(btnSave);
     header.parentNode.insertBefore(navbar, header);
 
-    btnSave.addEventListener('click', function() { saveChanges() });
+    btnSave.addEventListener('click', saveChanges);
 
     // Login => Logout
     let login = document.querySelectorAll('nav ul li')[2];
     login.innerHTML = 'logout';
-    login.addEventListener("click", logout);
+    login.addEventListener('click', logout);
 
     // Affichage "modifier"
     let change = document.createElement('p');
@@ -32,5 +32,5 @@ export default function displayAdminInterface() {
     let changePlace = document.querySelector('section#portfolio .projects');
     changePlace.append(change);
 
-    change.addEventListener('click', function() { newModal(0); });
+    change.addEventListener('click', () => newModal(0));
 }

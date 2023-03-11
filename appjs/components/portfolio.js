@@ -10,9 +10,7 @@ export async function displayAdminPortfolio() {
         }  
     })
 
-    createList.forEach((item)=> {
-        createAdminItem(item, 't');
-    });
+    createList.forEach((item) => createAdminItem(item, 't'));
 }
 
 export async function displayPortfolio(catId = 0) {
@@ -54,10 +52,7 @@ function createAdminItem(item, tid = '') {
     del.className = 'fa-solid fa-trash-can';
     del.setAttribute('data-id', tid+item.id);
     del.setAttribute('data-name', item.title);
-    del.addEventListener('click', function() {
-        let type = tid == '' ? 0 : 1
-        deleteProject(del, type, item.id);
-    });
+    del.addEventListener('click', () => deleteProject(del, tid != '' ? item.id : null));
 
     let img = document.createElement('img');
     img.src = item.imageUrl;

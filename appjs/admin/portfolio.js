@@ -4,7 +4,7 @@ import { createItem } from "../components/portfolio.js";
 import alerts from "../utils/alerts.js";
 
 export function createProject(title, category) {
-    if(currentFile != []) {
+    if(currentFile != '') {
         let project = {'id': createList.length, 'title': title, 'category': category, 'imageUrl': currentFile.imgSrc, 'image': currentFile.file};
         createList.push(project);
 
@@ -18,15 +18,15 @@ export function createProject(title, category) {
     }
 }
 
-export function deleteProject(el, type, tid = null) {
+export function deleteProject(el, tid = null) {
     let id = el.getAttribute('data-id');
 
-    if(type == 0) {
+    if(tid == null) {
         deleteList.push(id);
     } else {
         createList = createList.filter(del => del.id != tid);
     }
-
+    
     modal() ? el.parentNode.parentNode.remove() : null
     document.getElementById(id).remove();
     
@@ -36,16 +36,12 @@ export function deleteProject(el, type, tid = null) {
 export async function saveChanges() {
     if(createList.length > 0 || deleteList.length > 0) {
         if(createList.length > 0) {
-            createList.forEach((item) => {
-                persistCreate(item);
-            });
+            createList.forEach((item) => persistCreate(item));
             createList = [];
         }
-    
+
         if(deleteList.length > 0) {
-            deleteList.forEach((item) => {
-                persistDelete(item);
-            });
+            deleteList.forEach((item) => persistDelete(item));
             deleteList = [];
         }
     } else { alerts('info', 'Il n\'y a aucune modification en attente.'); }
@@ -59,23 +55,13 @@ async function persistCreate(item) {
 
     let persist = await fetchApi(apiWorks, 'POST', null, formData, localStorage.getItem('token'));
 
-    if(persist.status > 400) {
-        alerts('error', 'Erreur lors de la publication du projet "'+item.title+'".'); 
-    }
-
-    if(persist.status == 201) {
-        alerts('success', 'Le projet "'+item.title+'" vient d\'être publié.'); 
-    }
+    if(persist.status > 400) { alerts('error', 'Erreur lors de la publication du projet "'+item.title+'".'); }
+    if(persist.status == 201) { alerts('success', 'Le projet "'+item.title+'" vient d\'être publié.'); }
 }
 
 async function persistDelete(item) {
     let persist = await fetchApi(apiWorks+'/'+item, 'DELETE', null, null, localStorage.getItem('token'), false);
-
-    if(persist.status > 400) {
-        alerts('error', 'Erreur lors de la tentative de suppression d\'un projet');
-    }
-
-    if(persist.status > 200) {
-        alerts('success', 'Un projet vient d\'être supprimé définitivement.');
-    }
+    
+    if(persist.status > 400) { alerts('error', 'Erreur lors de la tentative de suppression d\'un projet'); }
+    if(persist.status == 204) { alerts('success', 'Un projet vient d\'être supprimé définitivement.'); }
 }

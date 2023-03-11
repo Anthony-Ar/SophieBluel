@@ -14,7 +14,7 @@ function setModal(type, content) {
     previous.className = 'fa-solid fa-arrow-left back';
     
     close.addEventListener('click', closeModal);
-    previous.addEventListener('click', function() { newModal(0) });
+    previous.addEventListener('click', () => newModal(0));
     window.onclick = function(e) {
         if (e.target.contains(modalBody) && e.target !== modalBody) {
             closeModal();
@@ -43,7 +43,7 @@ export async function adminModal() {
     modalDel.href = '#';
     modalDel.textContent = 'Supprimer la galerie';
 
-    modalBtn.addEventListener('click', function() { newModal(1); });
+    modalBtn.addEventListener('click', () => newModal(1));
 
     modalContent.append(modalTitle, modalGalery, modalSeparator, modalBtn, modalDel);
     let modal = setModal(0, modalContent);
