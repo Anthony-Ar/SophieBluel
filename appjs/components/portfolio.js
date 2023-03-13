@@ -15,6 +15,8 @@ export async function displayAdminPortfolio() {
 
 export async function displayPortfolio(catId = 0) {
     let fetchWorks = await fetchApi(apiWorks, 'GET');
+    let el = document.querySelector('.gallery');
+    el.innerHTML = '';
     let figure = '';
 
     fetchWorks.data.forEach((item) => {
