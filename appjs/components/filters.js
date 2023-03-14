@@ -15,10 +15,10 @@ export async function displayFilters() {
     createFilters(filtersList);
 }
 
-function setActive(el) {
+function setActive() {
     document.querySelector('.category li.active').classList.remove('active');
-    el.classList.add('active');
-    displayPortfolio(el.getAttribute('data-id'))
+    this.classList.add('active');
+    displayPortfolio(this.getAttribute('data-id'))
 }
 
 function createFilters(list) {
@@ -29,7 +29,7 @@ function createFilters(list) {
         li.innerText = item[1];
         li.setAttribute('data-id', item[0]);
 
-        li.addEventListener('click', function() { setActive(this); });
+        li.addEventListener('click', setActive.bind(li));
 
         document.querySelector('.category').append(li);
 

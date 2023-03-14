@@ -277,8 +277,10 @@ form#add-form span.separator {
 }
 
 .admin-navbar button {
-    width: 220px; 
-    padding: .5em 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .2em .2em .2em 1em;
     border-radius: 60px;
     background: white;
     margin-left: 2em;
@@ -288,6 +290,19 @@ form#add-form span.separator {
     font-family: 'Work Sans';
     font-size: 14px;
     font-weight: 500;
+}
+
+.admin-navbar span.counter-change {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    height: 24px;
+    min-width: 24px;
+    margin-left: 0.5em;
+    background: rgb(75, 177, 207, 0.9);
+    padding: 0.2em;
+    border-radius: 500px;
 }
 
 #portfolio .projects {
@@ -305,6 +320,7 @@ form#add-form span.separator {
     cursor: pointer;
     margin-left: 2em;
 }
+
 
 /* LogIn */
 body.login {

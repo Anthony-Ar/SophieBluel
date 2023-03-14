@@ -2,6 +2,7 @@ import { fetchApi } from "../utils/fetch.js";
 import { modal, newModal } from "../modals/modals.js";
 import { createItem } from "../components/portfolio.js";
 import alerts from "../utils/alerts.js";
+import { countChanges } from "./interface.js";
 
 export function createProject(title, category) {
     if(currentFile != '') {
@@ -12,6 +13,7 @@ export function createProject(title, category) {
         alerts('success', 'Le projet "'+title+'" vient d\'être crée en mode édition.');
 
         currentFile = '';
+        countChanges();
         newModal(0);
     } else {
         alerts('warn', 'Vous devez d\'abord choisir une image à associer au projet.');
@@ -29,6 +31,7 @@ export function deleteProject(el, tid = null) {
     
     modal() ? el.parentNode.parentNode.remove() : null
     document.getElementById(id).remove();
+    countChanges();
     
     alerts('success', 'Le projet "'+el.getAttribute('data-name')+'" vient d\'être supprimé en mode édition.');
 }
@@ -44,6 +47,7 @@ export async function saveChanges() {
             deleteList.forEach((item) => persistDelete(item));
             deleteList = [];
         }
+        countChanges();
     } else { alerts('info', 'Il n\'y a aucune modification en attente.'); }
 }
 
