@@ -285,6 +285,7 @@ form#add-form span.separator {
     background: white;
     margin-left: 2em;
     cursor: pointer;
+    border: none;
 
     color: #000000;
     font-family: 'Work Sans';
